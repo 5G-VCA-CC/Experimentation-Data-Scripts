@@ -1,0 +1,43 @@
+socket set to IP_RECVTOS
+socket SO_RCVBUF set to 20971520
+Listen on port 5300 to receive RTP from sender 
+.
+.
+Packet(s) lost or reordered :    16 was received, previous rcvd is    14 
+Packet(s) lost or reordered :   145 was received, previous rcvd is    75 
+Packet(s) lost or reordered :   289 was received, previous rcvd is   219 
+Packet(s) lost or reordered :   430 was received, previous rcvd is   363 
+Packet(s) lost or reordered :   574 was received, previous rcvd is   504 
+Packet(s) lost or reordered :   718 was received, previous rcvd is   648 
+Packet(s) lost or reordered :   859 was received, previous rcvd is   792 
+Packet(s) lost or reordered :  1003 was received, previous rcvd is   933 
+Packet(s) lost or reordered :  1147 was received, previous rcvd is  1077 
+.
+Packet(s) lost or reordered :  1291 was received, previous rcvd is  1221 
+.
+Packet(s) lost or reordered :  1435 was received, previous rcvd is  1365 
+Packet(s) lost or reordered :  1579 was received, previous rcvd is  1509 
+.
+Packet(s) lost or reordered :  1723 was received, previous rcvd is  1653 
+.
+Packet(s) lost or reordered :  1867 was received, previous rcvd is  1797 
+Packet(s) lost or reordered :  2008 was received, previous rcvd is  1941 
+Packet(s) lost or reordered :  2149 was received, previous rcvd is  2082 
+Packet(s) lost or reordered :  2290 was received, previous rcvd is  2223 
+Packet(s) lost or reordered :  2434 was received, previous rcvd is  2364 
+Packet(s) lost or reordered :  2578 was received, previous rcvd is  2508 
+Packet(s) lost or reordered :  2722 was received, previous rcvd is  2652 
+Packet(s) lost or reordered :  2866 was received, previous rcvd is  2796 
+Packet(s) lost or reordered :  3010 was received, previous rcvd is  2940 
+Packet(s) lost or reordered :  3154 was received, previous rcvd is  3084 
+Packet(s) lost or reordered :  3295 was received, previous rcvd is  3228 
+.
+Packet(s) lost or reordered :  3439 was received, previous rcvd is  3369 
+.
+Packet(s) lost or reordered :  3583 was received, previous rcvd is  3513 
+Packet(s) lost or reordered :  3727 was received, previous rcvd is  3657 
+Packet(s) lost or reordered :  3871 was received, previous rcvd is  3801 
+Packet(s) lost or reordered :  4012 was received, previous rcvd is  3945 
+Packet(s) lost or reordered :  4156 was received, previous rcvd is  4086 
+Packet(s) lost or reordered :  4300 was received, previous rcvd is  4230 
+.

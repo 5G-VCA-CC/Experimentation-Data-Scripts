@@ -1,0 +1,24 @@
+Listen on port 5305 to receive RTCP from decoder 
+Scream sender started! 
+ summary   2.0  Transmit rate =  2656kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.26%)[ 0.0%,  0.0%, 99.6%,  0.4%], RTT = 0.047s, Queue delay = 0.001s, MTU = 1200
+ summary   4.0  Transmit rate =  5689kbps, PLR =  0.00%( 0.00%), CE =  0.26%( 0.53%)[ 0.0%,  0.0%, 99.4%,  0.6%], RTT = 0.044s, Queue delay = 0.001s, MTU = 1200
+ summary   6.0  Transmit rate =  5229kbps, PLR =  0.00%( 0.00%), CE =  0.52%( 0.52%)[ 0.0%,  0.0%, 99.5%,  0.5%], RTT = 0.043s, Queue delay = 0.001s, MTU = 1200
+ summary   8.0  Transmit rate =  4785kbps, PLR =  0.00%( 0.00%), CE =  0.72%( 0.55%)[ 0.0%,  0.0%, 99.5%,  0.5%], RTT = 0.042s, Queue delay = 0.001s, MTU = 1200
+ summary  10.0  Transmit rate =  3557kbps, PLR =  0.00%( 0.00%), CE =  1.01%( 0.67%)[ 0.0%,  0.0%, 99.3%,  0.7%], RTT = 0.042s, Queue delay = 0.001s, MTU = 1200
+ summary  12.0  Transmit rate =  2562kbps, PLR =  0.00%( 0.00%), CE =  1.48%( 0.70%)[ 0.0%,  0.0%, 99.3%,  0.7%], RTT = 0.042s, Queue delay = 0.001s, MTU = 1200
+ summary  14.0  Transmit rate =  2391kbps, PLR =  0.00%( 0.00%), CE =  1.71%( 0.73%)[ 0.0%,  0.0%, 99.3%,  0.7%], RTT = 0.042s, Queue delay = 0.001s, MTU = 1200
+ summary  16.0  Transmit rate =  2489kbps, PLR =  0.00%( 0.00%), CE =  1.05%( 0.72%)[ 0.0%,  0.0%, 99.3%,  0.7%], RTT = 0.042s, Queue delay = 0.001s, MTU = 1200
+ summary  18.0  Transmit rate =  2581kbps, PLR =  0.00%( 0.00%), CE =  1.44%( 0.77%)[ 0.0%,  0.0%, 99.2%,  0.8%], RTT = 0.042s, Queue delay = 0.001s, MTU = 1200
+ summary  20.0  Transmit rate =  2381kbps, PLR =  0.00%( 0.00%), CE =  1.84%( 0.87%)[ 0.0%,  0.0%, 99.1%,  0.9%], RTT = 0.042s, Queue delay = 0.001s, MTU = 1200
+ summary  22.0  Transmit rate =  2273kbps, PLR =  0.00%( 0.00%), CE =  1.79%( 0.88%)[ 0.0%,  0.0%, 99.1%,  0.9%], RTT = 0.042s, Queue delay = 0.001s, MTU = 1200
+ summary  24.0  Transmit rate =  3140kbps, PLR =  0.00%( 0.00%), CE =  1.45%( 0.84%)[ 0.0%,  0.0%, 99.2%,  0.8%], RTT = 0.042s, Queue delay = 0.001s, MTU = 1200
+ summary  26.0  Transmit rate =  3225kbps, PLR =  0.00%( 0.00%), CE =  0.51%( 0.82%)[ 0.0%,  0.0%, 99.2%,  0.8%], RTT = 0.042s, Queue delay = 0.001s, MTU = 1200
+ summary  28.0  Transmit rate =  3040kbps, PLR =  0.00%( 0.00%), CE =  0.98%( 0.85%)[ 0.0%,  0.0%, 99.2%,  0.8%], RTT = 0.042s, Queue delay = 0.001s, MTU = 1200
+
+======================== Summary ==========================
+ Bitrate min/max/avg [kbps]          :  1091/ 6652/ 3334
+ RTT     min/max/avg [s]             : 0.042/0.050/0.042
+ Queue delay max/avg [s]             : 0.002/0.001
+ Packet loss avg [%]                 : 0.000
+ ECN/L4S NotECT/ECT(0)/ECT(1)/CE [%] :  0.0/ 0.0/99.2/ 0.8
+===========================================================
