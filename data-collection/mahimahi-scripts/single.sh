@@ -38,7 +38,40 @@ PY
   fi
 }
 
-OUT_DIR="$(realpath -m "$(yaml_get '.output_dir')")"
+is_true() {
+  case "${1:-}" in
+    1|true|True|TRUE|yes|Yes|YES|on|On|ON) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+# ----------------------------
+# Fix output_dir resolution
+# - require .output_dir
+# - resolve relative to YAML file directory
+# ----------------------------
+CFG_ABS="$(realpath -m "$CFG")"
+CFG_DIR="$(dirname "$CFG_ABS")"
+
+OUT_DIR_RAW="$(yaml_get '.output_dir')"
+if [[ -z "${OUT_DIR_RAW:-}" || "${OUT_DIR_RAW}" == "null" ]]; then
+  echo "[!] YAML missing .output_dir (or empty)."
+  exit 2
+fi
+
+if [[ "$OUT_DIR_RAW" != /* ]]; then
+  OUT_DIR_RAW="$CFG_DIR/$OUT_DIR_RAW"
+fi
+
+OUT_DIR="$(realpath -m "$OUT_DIR_RAW")"
+if [[ "$OUT_DIR" == "/" ]]; then
+  echo "[!] Refusing OUT_DIR=/ (check .output_dir in YAML)"
+  exit 2
+fi
+
+echo "[DBG] CFG=$CFG_ABS"
+echo "[DBG] OUT_DIR=$OUT_DIR"
+
 SECS="$(yaml_get '.secs_per_run')"
 NUM_RUNS="$(yaml_get '.num_runs')"
 
@@ -57,9 +90,6 @@ BASE_PORT="$(yaml_get '.flows.base_port')"
 SCREAM_DIR="$(yaml_get '.paths.scream_dir')"
 SCREAM_TX="$SCREAM_DIR/bin/scream_bw_test_tx"
 SCREAM_RX="$SCREAM_DIR/bin/scream_bw_test_rx"
-
-CLASSIC_TOS="$(yaml_get '.flows.classic.tos')"   # e.g. 2 (ECT0)
-L4S_TOS="$(yaml_get '.flows.l4s.tos')"           # e.g. 1 (ECT1)
 
 DELAY_MS="$(yaml_get '.mahimahi.delay_ms')"
 : "${DELAY_MS:=0}"
@@ -121,14 +151,18 @@ next_index() {
 run_one() {
   local idx="$1"
 
+  # Enable flows from YAML booleans (no explicit marking / no tos fields)
   local classic_enabled=0
   local l4s_enabled=0
 
-  if [[ -n "${CLASSIC_TOS:-}" && "${CLASSIC_TOS:-}" != "null" ]]; then classic_enabled=1; fi
-  if [[ -n "${L4S_TOS:-}" && "${L4S_TOS:-}" != "null" ]]; then l4s_enabled=1; fi
+  CLASSIC_ENABLED_YAML="$(yaml_get '.flows.classic.enabled')"
+  L4S_ENABLED_YAML="$(yaml_get '.flows.l4s.enabled')"
+
+  is_true "$CLASSIC_ENABLED_YAML" && classic_enabled=1
+  is_true "$L4S_ENABLED_YAML" && l4s_enabled=1
 
   if [[ $classic_enabled -eq 0 && $l4s_enabled -eq 0 ]]; then
-    echo "[!] No flows enabled."
+    echo "[!] No flows enabled (.flows.classic.enabled / .flows.l4s.enabled)."
     exit 2
   fi
 
@@ -159,14 +193,12 @@ run_one() {
 
   if [[ $classic_enabled -eq 1 ]]; then : > "$tx1_log"; fi
   if [[ $l4s_enabled -eq 1 ]]; then : > "$tx2_log"; fi
-  chown "$RUN_USER:$RUN_USER" "$tx1_log" "$tx2_log" 2>/dev/null || true
+  chown "$RUN_USER:$RUN_USER" "$tx1_log" "$tx2_log" "$rx1_log" "$rx2_log" 2>/dev/null || true
 
   sleep 1
   (
     sudo -u "$RUN_USER" env \
       SCREAM_TX="$SCREAM_TX" \
-      CLASSIC_TOS="${CLASSIC_TOS:-}" \
-      L4S_TOS="${L4S_TOS:-}" \
       SECS="$SECS" \
       PORT1="$port1" \
       PORT2="$port2" \
@@ -180,79 +212,29 @@ run_one() {
         "$TRACE_UP" "$TRACE_DOWN" -- \
         mm-delay "$DELAY_MS" \
       bash -lc '
-    set -euo pipefail
+        set -euo pipefail
 
-    echo "[DBG] whoami=$(whoami) uid=$(id -u) euid=$EUID"
-    echo "[DBG] PATH=$PATH"
-    echo "[DBG] SUDO_USER=${SUDO_USER:-} USER=${USER:-}"
+        echo "[DBG] whoami=$(whoami) uid=$(id -u) euid=$EUID"
+        echo "[DBG] PATH=$PATH"
+        echo "[DBG] SUDO_USER=${SUDO_USER:-} USER=${USER:-}"
 
-    SUDO=/usr/bin/sudo
-    IPTABLES=/usr/sbin/iptables
-    CHAIN=MZ_SCREAM_MARK
+        echo "[DBG] launching scream (SCReAM tags only; no iptables marking)"
+        pids=()
 
-    must_int() { [[ "${1:-}" =~ ^[0-9]+$ ]]; }
+        # classic: plain
+        if [[ "${CLASSIC_ENABLED}" == "1" ]]; then
+          ( "${SCREAM_TX}" -time "${SECS}" 10.0.0.1 "${PORT1}" >>"${TX1_LOG}" 2>&1 ) &
+          pids+=($!)
+        fi
 
-    ipt() {
-      echo "[DBG] ipt $*"
-      # run and show stderr if it fails
-      if ! out=$("$SUDO" -n "$IPTABLES" -w "$@" 2>&1); then
-        echo "[ERR] iptables failed: $out" >&2
-        return 1
-      fi
-      return 0
-    }
+        # l4s: SCReAM-side tag
+        if [[ "${L4S_ENABLED}" == "1" ]]; then
+          ( "${SCREAM_TX}" -ect 1 -time "${SECS}" 10.0.0.1 "${PORT2}" >>"${TX2_LOG}" 2>&1 ) &
+          pids+=($!)
+        fi
 
-    echo "[DBG] checking sudo -n true"
-    # Verify iptables is allowed
-    if ! "$SUDO" -n "$IPTABLES" -L >/dev/null 2>&1; then
-      echo "[ERR] sudo iptables not permitted inside mahimahi"
-      exit 51
-    fi
-
-    echo "[DBG] sudo OK"
-
-    echo "[DBG] iptables version:"
-    "$SUDO" -n "$IPTABLES" -V 2>&1 || true
-
-    echo "[DBG] create/flush chain"
-    "$SUDO" -n "$IPTABLES" -w -t mangle -N "$CHAIN" 2>/dev/null || true
-    ipt -t mangle -F "$CHAIN"
-
-    echo "[DBG] hook chain to OUTPUT if missing"
-    if ! "$SUDO" -n "$IPTABLES" -w -t mangle -C OUTPUT -j "$CHAIN" 2>/dev/null; then
-      ipt -t mangle -A OUTPUT -j "$CHAIN"
-    fi
-
-    if [[ "${CLASSIC_ENABLED}" == "1" ]]; then
-      must_int "${CLASSIC_TOS}" || { echo "[ERR] Bad CLASSIC_TOS=${CLASSIC_TOS}" >&2; exit 2; }
-      tos_hex=$(printf "0x%02x" "${CLASSIC_TOS}")
-      echo "[DBG] classic mark dport=${PORT1} tos=${tos_hex}"
-      ipt -t mangle -A "$CHAIN" -p udp --dport "${PORT1}" -j TOS --set-tos "${tos_hex}"
-    fi
-
-    if [[ "${L4S_ENABLED}" == "1" ]]; then
-      must_int "${L4S_TOS}" || { echo "[ERR] Bad L4S_TOS=${L4S_TOS}" >&2; exit 2; }
-      tos_hex=$(printf "0x%02x" "${L4S_TOS}")
-      echo "[DBG] l4s mark dport=${PORT2} tos=${tos_hex}"
-      ipt -t mangle -A "$CHAIN" -p udp --dport "${PORT2}" -j TOS --set-tos "${tos_hex}"
-    fi
-
-    echo "[DBG] dump rules"
-    "$SUDO" -n "$IPTABLES" -w -t mangle -S OUTPUT 2>&1 || true
-    "$SUDO" -n "$IPTABLES" -w -t mangle -S "$CHAIN" 2>&1 || true
-
-    echo "[DBG] launching scream"
-    pids=()
-    if [[ "${CLASSIC_ENABLED}" == "1" ]]; then
-      ( "${SCREAM_TX}" -time "${SECS}" 10.0.0.1 "${PORT1}" >>"${TX1_LOG}" 2>&1 ) &
-      pids+=($!)
-    fi
-    if [[ "${L4S_ENABLED}" == "1" ]]; then
-      ( "${SCREAM_TX}" -time "${SECS}" 10.0.0.1 "${PORT2}" >>"${TX2_LOG}" 2>&1 ) &
-      pids+=($!)
-    fi
-
-    for p in "${pids[@]}"; do wait "$p"; done'
+        for p in "${pids[@]}"; do wait "$p"; done
+      '
   ) 2>&1 | tee "$out"
 
   [[ -n "${rx1:-}" ]] && kill "$rx1" 2>/dev/null || true

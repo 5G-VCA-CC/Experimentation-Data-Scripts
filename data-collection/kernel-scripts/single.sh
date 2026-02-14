@@ -296,25 +296,25 @@ start_qdisc_logger() {
   echo $!
 }
 
-apply_ecn_tos_marks_in_sender_ns() {
-  # Mark ECN/TOS per UDP destination port for SCReAM flows.
-  # Must run inside NS_S because packets originate there.
-  sudo ip netns exec "$NS_S" iptables -t mangle -F OUTPUT 2>/dev/null || true
+# apply_ecn_tos_marks_in_sender_ns() {
+#   # Mark ECN/TOS per UDP destination port for SCReAM flows.
+#   # Must run inside NS_S because packets originate there.
+#   sudo ip netns exec "$NS_S" iptables -t mangle -F OUTPUT 2>/dev/null || true
 
-  if [[ "$CLASSIC_ENABLED" == "true" ]]; then
-    local tos_hex
-    tos_hex="$(printf '0x%02x' "$CLASSIC_TOS")"
-    sudo ip netns exec "$NS_S" iptables -t mangle -A OUTPUT \
-      -p udp --dport "$PORT_CLASSIC" -j TOS --set-tos "$tos_hex"
-  fi
+#   if [[ "$CLASSIC_ENABLED" == "true" ]]; then
+#     local tos_hex
+#     tos_hex="$(printf '0x%02x' "$CLASSIC_TOS")"
+#     sudo ip netns exec "$NS_S" iptables -t mangle -A OUTPUT \
+#       -p udp --dport "$PORT_CLASSIC" -j TOS --set-tos "$tos_hex"
+#   fi
 
-  if [[ "$L4S_ENABLED" == "true" ]]; then
-    local tos_hex
-    tos_hex="$(printf '0x%02x' "$L4S_TOS")"
-    sudo ip netns exec "$NS_S" iptables -t mangle -A OUTPUT \
-      -p udp --dport "$PORT_L4S" -j TOS --set-tos "$tos_hex"
-  fi
-}
+#   if [[ "$L4S_ENABLED" == "true" ]]; then
+#     local tos_hex
+#     tos_hex="$(printf '0x%02x' "$L4S_TOS")"
+#     sudo ip netns exec "$NS_S" iptables -t mangle -A OUTPUT \
+#       -p udp --dport "$PORT_L4S" -j TOS --set-tos "$tos_hex"
+#   fi
+# }
 
 # ============================================================
 # Run enabled SCReAM flows concurrently (LOG OUTPUT)
@@ -337,30 +337,63 @@ run_both_flows() {
   # IMPORTANT:
   #   RX takes SENDER address
   #   TX takes RECEIVER address
-  if [[ "$CLASSIC_ENABLED" == "true" ]]; then
-    : > "$classic_rx_log"; : > "$classic_tx_log"
+  # if [[ "$CLASSIC_ENABLED" == "true" ]]; then
+  #   : > "$classic_rx_log"; : > "$classic_tx_log"
 
+  #   sudo ip netns exec "$NS_R" stdbuf -oL -eL "$SCREAM_RX" "$SENDER_IP" "$PORT_CLASSIC" \
+  #     >>"$classic_rx_log" 2>&1 &
+  #   rx_classic=$!
+
+  #   sleep 0.2
+
+  #   sudo ip netns exec "$NS_S" stdbuf -oL -eL "$SCREAM_TX" -time "$SECS_FLOW" "$RECV_IP" "$PORT_CLASSIC" \
+  #     >>"$classic_tx_log" 2>&1 &
+  #   tx_classic=$!
+  # fi
+
+  # if [[ "$L4S_ENABLED" == "true" ]]; then
+  #   : > "$l4s_rx_log"; : > "$l4s_tx_log"
+
+  #   sudo ip netns exec "$NS_R" stdbuf -oL -eL "$SCREAM_RX" "$SENDER_IP" "$PORT_L4S" \
+  #     >>"$l4s_rx_log" 2>&1 &
+  #   rx_l4s=$!
+
+  #   sleep 0.2
+
+  #   sudo ip netns exec "$NS_S" stdbuf -oL -eL "$SCREAM_TX" -etc 1 -time "$SECS_FLOW" "$RECV_IP" "$PORT_L4S" \
+  #     >>"$l4s_tx_log" 2>&1 &
+  #   tx_l4s=$!
+  # fi
+
+  [[ "$CLASSIC_ENABLED" == "true" ]] && { : > "$classic_rx_log"; : > "$classic_tx_log"; }
+  [[ "$L4S_ENABLED"     == "true" ]] && { : > "$l4s_rx_log";     : > "$l4s_tx_log";     }
+
+  # Start both receivers
+  if [[ "$CLASSIC_ENABLED" == "true" ]]; then
     sudo ip netns exec "$NS_R" stdbuf -oL -eL "$SCREAM_RX" "$SENDER_IP" "$PORT_CLASSIC" \
       >>"$classic_rx_log" 2>&1 &
     rx_classic=$!
+  fi
 
-    sleep 0.2
+  if [[ "$L4S_ENABLED" == "true" ]]; then
+    sudo ip netns exec "$NS_R" stdbuf -oL -eL "$SCREAM_RX" "$SENDER_IP" "$PORT_L4S" \
+      >>"$l4s_rx_log" 2>&1 &
+    rx_l4s=$!
+  fi
 
+  #  Start both senders
+
+  # Start both senders at the same time after 0.2s
+  sleep 1
+
+  if [[ "$CLASSIC_ENABLED" == "true" ]]; then
     sudo ip netns exec "$NS_S" stdbuf -oL -eL "$SCREAM_TX" -time "$SECS_FLOW" "$RECV_IP" "$PORT_CLASSIC" \
       >>"$classic_tx_log" 2>&1 &
     tx_classic=$!
   fi
 
   if [[ "$L4S_ENABLED" == "true" ]]; then
-    : > "$l4s_rx_log"; : > "$l4s_tx_log"
-
-    sudo ip netns exec "$NS_R" stdbuf -oL -eL "$SCREAM_RX" "$SENDER_IP" "$PORT_L4S" \
-      >>"$l4s_rx_log" 2>&1 &
-    rx_l4s=$!
-
-    sleep 0.2
-
-    sudo ip netns exec "$NS_S" stdbuf -oL -eL "$SCREAM_TX" -time "$SECS_FLOW" "$RECV_IP" "$PORT_L4S" \
+    sudo ip netns exec "$NS_S" stdbuf -oL -eL "$SCREAM_TX" -ect 1 -time "$SECS_FLOW" "$RECV_IP" "$PORT_L4S" \
       >>"$l4s_tx_log" 2>&1 &
     tx_l4s=$!
   fi
@@ -387,7 +420,7 @@ run_once() {
   reset_namespaces_fresh
   apply_rtt_netem_delay
   apply_dualpi2_qdisc
-  apply_ecn_tos_marks_in_sender_ns
+  # apply_ecn_tos_marks_in_sender_ns
 
   run_both_flows "$idx" &
   local EXP_PID=$!
@@ -396,6 +429,7 @@ run_once() {
     sleep "$WARMUP_SEC"
   fi
 
+  sleep 1
   local QDISC_PID
   QDISC_PID="$(start_qdisc_logger "$idx")"
 
