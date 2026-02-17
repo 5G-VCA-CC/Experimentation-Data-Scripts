@@ -1,0 +1,23 @@
+socket set to IP_RECVTOS
+socket SO_RCVBUF set to 20971520
+Listen on port 5488 to receive RTP from sender 
+.
+.
+Packet(s) lost or reordered :   275 was received, previous rcvd is   273 
+Packet(s) lost or reordered :   489 was received, previous rcvd is   487 
+Packet(s) lost or reordered :  1893 was received, previous rcvd is  1891 
+Packet(s) lost or reordered :  3437 was received, previous rcvd is  3435 
+Packet(s) lost or reordered :  4909 was received, previous rcvd is  4907 
+Packet(s) lost or reordered :  8009 was received, previous rcvd is  8007 
+Packet(s) lost or reordered :  8191 was received, previous rcvd is  8189 
+Packet(s) lost or reordered :  8200 was received, previous rcvd is  8198 
+Packet(s) lost or reordered :  9719 was received, previous rcvd is  9717 
+Packet(s) lost or reordered : 11153 was received, previous rcvd is 11151 
+Packet(s) lost or reordered : 13262 was received, previous rcvd is 13260 
+Packet(s) lost or reordered : 14913 was received, previous rcvd is 14911 
+Packet(s) lost or reordered : 15229 was received, previous rcvd is 15227 
+Packet(s) lost or reordered : 16340 was received, previous rcvd is 16338 
+Packet(s) lost or reordered : 16540 was received, previous rcvd is 16538 
+Packet(s) lost or reordered : 16714 was received, previous rcvd is 16712 
+Packet(s) lost or reordered : 19230 was received, previous rcvd is 19228 
+.
