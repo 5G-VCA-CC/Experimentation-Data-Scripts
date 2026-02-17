@@ -1,0 +1,18 @@
+socket set to IP_RECVTOS
+socket SO_RCVBUF set to 20971520
+Listen on port 8080 to receive RTP from sender 
+.
+.
+Packet(s) lost or reordered :   197 was received, previous rcvd is   195 
+Packet(s) lost or reordered :   206 was received, previous rcvd is   204 
+Packet(s) lost or reordered :   290 was received, previous rcvd is   288 
+Packet(s) lost or reordered :  1155 was received, previous rcvd is  1153 
+Packet(s) lost or reordered :  1645 was received, previous rcvd is  1643 
+Packet(s) lost or reordered :  3072 was received, previous rcvd is  3070 
+Packet(s) lost or reordered :  4938 was received, previous rcvd is  4936 
+Packet(s) lost or reordered :  7128 was received, previous rcvd is  7126 
+Packet(s) lost or reordered :  7170 was received, previous rcvd is  7168 
+Packet(s) lost or reordered :  8964 was received, previous rcvd is  8962 
+Packet(s) lost or reordered : 11618 was received, previous rcvd is 11616 
+Packet(s) lost or reordered : 13431 was received, previous rcvd is 13429 
+Packet(s) lost or reordered : 14260 was received, previous rcvd is 14258 

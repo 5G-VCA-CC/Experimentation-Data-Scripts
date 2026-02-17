@@ -3,4 +3,14 @@ socket SO_RCVBUF set to 20971520
 Listen on port 5306 to receive RTP from sender 
 .
 .
+Packet(s) lost or reordered :  1192 was received, previous rcvd is  1190 
+Packet(s) lost or reordered :  2835 was received, previous rcvd is  2833 
+Packet(s) lost or reordered :  4728 was received, previous rcvd is  4726 
+Packet(s) lost or reordered : 11287 was received, previous rcvd is 11285 
+Packet(s) lost or reordered : 18240 was received, previous rcvd is 18238 
+Packet(s) lost or reordered : 24998 was received, previous rcvd is 24996 
+Packet(s) lost or reordered : 25113 was received, previous rcvd is 25111 
+Packet(s) lost or reordered : 27657 was received, previous rcvd is 27655 
+Packet(s) lost or reordered : 32803 was received, previous rcvd is 32801 
+Packet(s) lost or reordered : 40796 was received, previous rcvd is 40794 
 .

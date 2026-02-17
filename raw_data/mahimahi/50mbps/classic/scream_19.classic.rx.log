@@ -3,4 +3,15 @@ socket SO_RCVBUF set to 20971520
 Listen on port 5338 to receive RTP from sender 
 .
 .
+Packet(s) lost or reordered : 11620 was received, previous rcvd is 11618 
+Packet(s) lost or reordered : 12047 was received, previous rcvd is 12045 
+Packet(s) lost or reordered : 34025 was received, previous rcvd is 34023 
+Packet(s) lost or reordered : 34459 was received, previous rcvd is 34457 
+Packet(s) lost or reordered : 46512 was received, previous rcvd is 46510 
+Packet(s) lost or reordered : 50706 was received, previous rcvd is 50704 
+Packet(s) lost or reordered : 60847 was received, previous rcvd is 60845 
+Packet(s) lost or reordered : 21725 was received, previous rcvd is 21723 
+Packet(s) lost or reordered : 63928 was received, previous rcvd is 63926 
+Packet(s) lost or reordered : 64495 was received, previous rcvd is 64493 
+Packet(s) lost or reordered : 64545 was received, previous rcvd is 64543 
 .

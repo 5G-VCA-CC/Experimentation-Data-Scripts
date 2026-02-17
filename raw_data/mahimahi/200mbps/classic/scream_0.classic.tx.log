@@ -1,85 +1,27 @@
 Listen on port 5300 to receive RTCP from decoder 
 Scream sender started! 
- refresh 0.101105 RTP queue 1 packets discarded for SSRC 100
- rtpQueueDelay 0.200012 too large 1 0.701111 RTP queue 30 packets discarded for SSRC 100 hiSeqTx 75 hiSeqAckendl 0 seqNrOfNextRtp 76 seqNrOfLastRtp 105 diff 30
- rtpQueueDelay 0.259995 too large 1 0.961105 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 75 hiSeqAckendl 0 seqNrOfNextRtp 106 seqNrOfLastRtp 141 diff 66
- rtpQueueDelay 0.220001 too large 1 1.70111 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 216 hiSeqAckendl 0 seqNrOfNextRtp 217 seqNrOfLastRtp 249 diff 33
- rtpQueueDelay 0.259995 too large 1 1.96111 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 216 hiSeqAckendl 0 seqNrOfNextRtp 250 seqNrOfLastRtp 285 diff 69
-No RTCP feedback received
- rtpQueueDelay 0.220001 too large 1 2.70111 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 360 hiSeqAckendl 0 seqNrOfNextRtp 361 seqNrOfLastRtp 393 diff 33
- rtpQueueDelay 0.259995 too large 1 2.96111 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 360 hiSeqAckendl 0 seqNrOfNextRtp 394 seqNrOfLastRtp 429 diff 69
- rtpQueueDelay 0.220001 too large 1 3.70111 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 504 hiSeqAckendl 0 seqNrOfNextRtp 505 seqNrOfLastRtp 537 diff 33
- rtpQueueDelay 0.259995 too large 1 3.96111 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 504 hiSeqAckendl 0 seqNrOfNextRtp 538 seqNrOfLastRtp 573 diff 69
-No RTCP feedback received
- rtpQueueDelay 0.220001 too large 1 4.70111 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 648 hiSeqAckendl 0 seqNrOfNextRtp 649 seqNrOfLastRtp 681 diff 33
- rtpQueueDelay 0.259995 too large 1 4.96111 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 648 hiSeqAckendl 0 seqNrOfNextRtp 682 seqNrOfLastRtp 717 diff 69
- rtpQueueDelay 0.220001 too large 1 5.70111 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 792 hiSeqAckendl 0 seqNrOfNextRtp 793 seqNrOfLastRtp 825 diff 33
- rtpQueueDelay 0.259995 too large 1 5.96111 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 792 hiSeqAckendl 0 seqNrOfNextRtp 826 seqNrOfLastRtp 861 diff 69
-No RTCP feedback received
- rtpQueueDelay 0.220001 too large 1 6.70111 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 936 hiSeqAckendl 0 seqNrOfNextRtp 937 seqNrOfLastRtp 969 diff 33
- rtpQueueDelay 0.259995 too large 1 6.96111 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 936 hiSeqAckendl 0 seqNrOfNextRtp 970 seqNrOfLastRtp 1005 diff 69
- rtpQueueDelay 0.200012 too large 1 7.68112 RTP queue 30 packets discarded for SSRC 100 hiSeqTx 1080 hiSeqAckendl 0 seqNrOfNextRtp 1081 seqNrOfLastRtp 1110 diff 30
- rtpQueueDelay 0.259995 too large 1 7.94112 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 1080 hiSeqAckendl 0 seqNrOfNextRtp 1111 seqNrOfLastRtp 1146 diff 66
-No RTCP feedback received
- rtpQueueDelay 0.219986 too large 1 8.68111 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 1221 hiSeqAckendl 0 seqNrOfNextRtp 1222 seqNrOfLastRtp 1254 diff 33
- rtpQueueDelay 0.259995 too large 1 8.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 1221 hiSeqAckendl 0 seqNrOfNextRtp 1255 seqNrOfLastRtp 1290 diff 69
- rtpQueueDelay 0.220001 too large 1 9.68111 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 1365 hiSeqAckendl 0 seqNrOfNextRtp 1366 seqNrOfLastRtp 1398 diff 33
- rtpQueueDelay 0.259995 too large 1 9.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 1365 hiSeqAckendl 0 seqNrOfNextRtp 1399 seqNrOfLastRtp 1434 diff 69
-No RTCP feedback received
- rtpQueueDelay 0.220001 too large 1 10.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 1509 hiSeqAckendl 0 seqNrOfNextRtp 1510 seqNrOfLastRtp 1542 diff 33
- rtpQueueDelay 0.259995 too large 1 10.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 1509 hiSeqAckendl 0 seqNrOfNextRtp 1543 seqNrOfLastRtp 1578 diff 69
- rtpQueueDelay 0.220001 too large 1 11.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 1653 hiSeqAckendl 0 seqNrOfNextRtp 1654 seqNrOfLastRtp 1686 diff 33
- rtpQueueDelay 0.259995 too large 1 11.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 1653 hiSeqAckendl 0 seqNrOfNextRtp 1687 seqNrOfLastRtp 1722 diff 69
-No RTCP feedback received
- rtpQueueDelay 0.220001 too large 1 12.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 1797 hiSeqAckendl 0 seqNrOfNextRtp 1798 seqNrOfLastRtp 1830 diff 33
- rtpQueueDelay 0.259995 too large 1 12.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 1797 hiSeqAckendl 0 seqNrOfNextRtp 1831 seqNrOfLastRtp 1866 diff 69
- rtpQueueDelay 0.220001 too large 1 13.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 1941 hiSeqAckendl 0 seqNrOfNextRtp 1942 seqNrOfLastRtp 1974 diff 33
- rtpQueueDelay 0.259995 too large 1 13.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 1941 hiSeqAckendl 0 seqNrOfNextRtp 1975 seqNrOfLastRtp 2010 diff 69
-No RTCP feedback received
- rtpQueueDelay 0.220001 too large 1 14.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 2085 hiSeqAckendl 0 seqNrOfNextRtp 2086 seqNrOfLastRtp 2118 diff 33
- rtpQueueDelay 0.26001 too large 1 14.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 2085 hiSeqAckendl 0 seqNrOfNextRtp 2119 seqNrOfLastRtp 2154 diff 69
- rtpQueueDelay 0.220001 too large 1 15.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 2229 hiSeqAckendl 0 seqNrOfNextRtp 2230 seqNrOfLastRtp 2262 diff 33
- rtpQueueDelay 0.26001 too large 1 15.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 2229 hiSeqAckendl 0 seqNrOfNextRtp 2263 seqNrOfLastRtp 2298 diff 69
-No RTCP feedback received
- rtpQueueDelay 0.220001 too large 1 16.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 2373 hiSeqAckendl 0 seqNrOfNextRtp 2374 seqNrOfLastRtp 2406 diff 33
- rtpQueueDelay 0.259995 too large 1 16.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 2373 hiSeqAckendl 0 seqNrOfNextRtp 2407 seqNrOfLastRtp 2442 diff 69
- rtpQueueDelay 0.219986 too large 1 17.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 2517 hiSeqAckendl 0 seqNrOfNextRtp 2518 seqNrOfLastRtp 2550 diff 33
- rtpQueueDelay 0.259995 too large 1 17.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 2517 hiSeqAckendl 0 seqNrOfNextRtp 2551 seqNrOfLastRtp 2586 diff 69
-No RTCP feedback received
- rtpQueueDelay 0.220001 too large 1 18.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 2661 hiSeqAckendl 0 seqNrOfNextRtp 2662 seqNrOfLastRtp 2694 diff 33
- rtpQueueDelay 0.259995 too large 1 18.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 2661 hiSeqAckendl 0 seqNrOfNextRtp 2695 seqNrOfLastRtp 2730 diff 69
- rtpQueueDelay 0.220001 too large 1 19.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 2805 hiSeqAckendl 0 seqNrOfNextRtp 2806 seqNrOfLastRtp 2838 diff 33
- rtpQueueDelay 0.26001 too large 1 19.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 2805 hiSeqAckendl 0 seqNrOfNextRtp 2839 seqNrOfLastRtp 2874 diff 69
-No RTCP feedback received
- rtpQueueDelay 0.220001 too large 1 20.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 2949 hiSeqAckendl 0 seqNrOfNextRtp 2950 seqNrOfLastRtp 2982 diff 33
- rtpQueueDelay 0.259995 too large 1 20.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 2949 hiSeqAckendl 0 seqNrOfNextRtp 2983 seqNrOfLastRtp 3018 diff 69
- rtpQueueDelay 0.220001 too large 1 21.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 3093 hiSeqAckendl 0 seqNrOfNextRtp 3094 seqNrOfLastRtp 3126 diff 33
- rtpQueueDelay 0.259995 too large 1 21.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 3093 hiSeqAckendl 0 seqNrOfNextRtp 3127 seqNrOfLastRtp 3162 diff 69
-No RTCP feedback received
- rtpQueueDelay 0.219986 too large 1 22.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 3237 hiSeqAckendl 0 seqNrOfNextRtp 3238 seqNrOfLastRtp 3270 diff 33
- rtpQueueDelay 0.259995 too large 1 22.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 3237 hiSeqAckendl 0 seqNrOfNextRtp 3271 seqNrOfLastRtp 3306 diff 69
- rtpQueueDelay 0.220001 too large 1 23.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 3381 hiSeqAckendl 0 seqNrOfNextRtp 3382 seqNrOfLastRtp 3414 diff 33
- rtpQueueDelay 0.259995 too large 1 23.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 3381 hiSeqAckendl 0 seqNrOfNextRtp 3415 seqNrOfLastRtp 3450 diff 69
-No RTCP feedback received
- rtpQueueDelay 0.220001 too large 1 24.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 3525 hiSeqAckendl 0 seqNrOfNextRtp 3526 seqNrOfLastRtp 3558 diff 33
- rtpQueueDelay 0.26001 too large 1 24.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 3525 hiSeqAckendl 0 seqNrOfNextRtp 3559 seqNrOfLastRtp 3594 diff 69
- rtpQueueDelay 0.220001 too large 1 25.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 3669 hiSeqAckendl 0 seqNrOfNextRtp 3670 seqNrOfLastRtp 3702 diff 33
- rtpQueueDelay 0.259995 too large 1 25.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 3669 hiSeqAckendl 0 seqNrOfNextRtp 3703 seqNrOfLastRtp 3738 diff 69
-No RTCP feedback received
- rtpQueueDelay 0.220001 too large 1 26.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 3813 hiSeqAckendl 0 seqNrOfNextRtp 3814 seqNrOfLastRtp 3846 diff 33
- rtpQueueDelay 0.259995 too large 1 26.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 3813 hiSeqAckendl 0 seqNrOfNextRtp 3847 seqNrOfLastRtp 3882 diff 69
- rtpQueueDelay 0.220001 too large 1 27.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 3957 hiSeqAckendl 0 seqNrOfNextRtp 3958 seqNrOfLastRtp 3990 diff 33
- rtpQueueDelay 0.26001 too large 1 27.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 3957 hiSeqAckendl 0 seqNrOfNextRtp 3991 seqNrOfLastRtp 4026 diff 69
-No RTCP feedback received
- rtpQueueDelay 0.220001 too large 1 28.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 4101 hiSeqAckendl 0 seqNrOfNextRtp 4102 seqNrOfLastRtp 4134 diff 33
- rtpQueueDelay 0.26001 too large 1 28.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 4101 hiSeqAckendl 0 seqNrOfNextRtp 4135 seqNrOfLastRtp 4170 diff 69
- rtpQueueDelay 0.220001 too large 1 29.6811 RTP queue 33 packets discarded for SSRC 100 hiSeqTx 4245 hiSeqAckendl 0 seqNrOfNextRtp 4246 seqNrOfLastRtp 4278 diff 33
- rtpQueueDelay 0.259995 too large 1 29.9411 RTP queue 36 packets discarded for SSRC 100 hiSeqTx 4245 hiSeqAckendl 0 seqNrOfNextRtp 4279 seqNrOfLastRtp 4314 diff 69
+ summary   2.0  Transmit rate =  1714kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.067s, Queue delay = 0.000s, MTU = 1200
+ summary   4.0  Transmit rate =  2645kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.086s, Queue delay = 0.001s, MTU = 1200
+ summary   6.0  Transmit rate =  4041kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.095s, Queue delay = 0.001s, MTU = 1200
+ summary   8.0  Transmit rate =  6155kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.099s, Queue delay = 0.001s, MTU = 1200
+ summary  10.0  Transmit rate =  9377kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.101s, Queue delay = 0.001s, MTU = 1200
+ summary  12.0  Transmit rate = 14552kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.102s, Queue delay = 0.001s, MTU = 1200
+ summary  14.0  Transmit rate = 23406kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.102s, Queue delay = 0.001s, MTU = 1200
+ summary  16.0  Transmit rate = 39770kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.102s, Queue delay = 0.001s, MTU = 1200
+ summary  18.0  Transmit rate = 71385kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.102s, Queue delay = 0.001s, MTU = 1200
+ summary  20.0  Transmit rate = 108963kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.103s, Queue delay = 0.002s, MTU = 1200
+ summary  22.0  Transmit rate = 121483kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.103s, Queue delay = 0.002s, MTU = 1200
+ summary  24.0  Transmit rate = 111805kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.103s, Queue delay = 0.002s, MTU = 1200
+ summary  26.0  Transmit rate = 108018kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.103s, Queue delay = 0.001s, MTU = 1200
+ summary  28.0  Transmit rate = 99070kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.103s, Queue delay = 0.001s, MTU = 1200
+ summary  30.0  Transmit rate = 92644kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.102s, Queue delay = 0.001s, MTU = 1200
+ summary  32.0  Transmit rate = 97151kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.102s, Queue delay = 0.001s, MTU = 1200
+ summary  34.1  Transmit rate = 110079kbps, PLR =  0.00%( 0.00%), CE =  0.00%( 0.00%)[100.0%,  0.0%,  0.0%,  0.0%], RTT = 0.102s, Queue delay = 0.001s, MTU = 1200
 
 ======================== Summary ==========================
- Bitrate min/max/avg [kbps]          :     0/ 1217/  498
- RTT     min/max/avg [s]             : 0.050/0.050/0.050
- Queue delay max/avg [s]             : 0.000/0.000
- Packet loss avg [%]                 : 0.000
- ECN/L4S NotECT/ECT(0)/ECT(1)/CE [%] :  0.0/ 0.0/ 0.0/ 0.0
+ Bitrate min/max/avg [kbps]          :  4564/187908/66811
+ RTT     min/max/avg [s]             : 0.050/0.104/0.101
+ Queue delay max/avg [s]             : 0.006/0.001
+ Packet loss avg [%]                 : 0.001
+ ECN/L4S NotECT/ECT(0)/ECT(1)/CE [%] : 100.0/ 0.0/ 0.0/ 0.0
 ===========================================================
