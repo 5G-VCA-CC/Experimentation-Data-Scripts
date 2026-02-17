@@ -334,37 +334,6 @@ run_both_flows() {
   local SENDER_IP="172.20.1.1"
   local RECV_IP="172.20.1.2"
 
-  # IMPORTANT:
-  #   RX takes SENDER address
-  #   TX takes RECEIVER address
-  # if [[ "$CLASSIC_ENABLED" == "true" ]]; then
-  #   : > "$classic_rx_log"; : > "$classic_tx_log"
-
-  #   sudo ip netns exec "$NS_R" stdbuf -oL -eL "$SCREAM_RX" "$SENDER_IP" "$PORT_CLASSIC" \
-  #     >>"$classic_rx_log" 2>&1 &
-  #   rx_classic=$!
-
-  #   sleep 0.2
-
-  #   sudo ip netns exec "$NS_S" stdbuf -oL -eL "$SCREAM_TX" -time "$SECS_FLOW" "$RECV_IP" "$PORT_CLASSIC" \
-  #     >>"$classic_tx_log" 2>&1 &
-  #   tx_classic=$!
-  # fi
-
-  # if [[ "$L4S_ENABLED" == "true" ]]; then
-  #   : > "$l4s_rx_log"; : > "$l4s_tx_log"
-
-  #   sudo ip netns exec "$NS_R" stdbuf -oL -eL "$SCREAM_RX" "$SENDER_IP" "$PORT_L4S" \
-  #     >>"$l4s_rx_log" 2>&1 &
-  #   rx_l4s=$!
-
-  #   sleep 0.2
-
-  #   sudo ip netns exec "$NS_S" stdbuf -oL -eL "$SCREAM_TX" -etc 1 -time "$SECS_FLOW" "$RECV_IP" "$PORT_L4S" \
-  #     >>"$l4s_tx_log" 2>&1 &
-  #   tx_l4s=$!
-  # fi
-
   [[ "$CLASSIC_ENABLED" == "true" ]] && { : > "$classic_rx_log"; : > "$classic_tx_log"; }
   [[ "$L4S_ENABLED"     == "true" ]] && { : > "$l4s_rx_log";     : > "$l4s_tx_log";     }
 
@@ -381,9 +350,7 @@ run_both_flows() {
     rx_l4s=$!
   fi
 
-  #  Start both senders
-
-  # Start both senders at the same time after 0.2s
+  # Start both senders at the same time after 1 sec
   sleep 1
 
   if [[ "$CLASSIC_ENABLED" == "true" ]]; then
@@ -422,6 +389,7 @@ run_once() {
   apply_dualpi2_qdisc
   # apply_ecn_tos_marks_in_sender_ns
 
+  sleep 1
   run_both_flows "$idx" &
   local EXP_PID=$!
 
@@ -429,7 +397,7 @@ run_once() {
     sleep "$WARMUP_SEC"
   fi
 
-  sleep 1
+  # sleep 1
   local QDISC_PID
   QDISC_PID="$(start_qdisc_logger "$idx")"
 

@@ -1,6 +1,6 @@
 runs:
   secs_per_run: 35
-  num_runs: 15
+  num_runs: 50
   setup_sec: 3
   warmup_sec: 0
   cooldown_sec: 3
@@ -20,7 +20,7 @@ paths:
 
 qdisc:
   rate: 50mbit
-  burst: 32k
+  burst: 25k
   target: 15ms
   tupdate: 16ms
   limit: 1042
