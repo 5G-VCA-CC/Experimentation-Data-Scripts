@@ -1,6 +1,6 @@
 runs:
-  secs_per_run: 35
-  num_runs: 50
+  secs_per_run: 21
+  num_runs: 100
   setup_sec: 3
   warmup_sec: 0
   cooldown_sec: 3

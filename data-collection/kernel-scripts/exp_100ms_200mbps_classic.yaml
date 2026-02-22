@@ -1,6 +1,6 @@
 runs:
-  secs_per_run: 35
-  num_runs: 50
+  secs_per_run: 30
+  num_runs: 100
   setup_sec: 3
   warmup_sec: 0
   cooldown_sec: 3
@@ -30,7 +30,7 @@ qdisc:
 # Presence enables flow. SCReAM bw test is UDP-only.
 flows:
   classic:
-    tos: 2   # ECT(0)
+    tos: 2   # sECT(0)
   # l4s:
   #   tos: 1   # ECT(1)
 

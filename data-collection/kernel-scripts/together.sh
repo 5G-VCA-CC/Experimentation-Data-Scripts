@@ -24,7 +24,7 @@ for yaml in "$SCRIPT_DIR"/exp_*.yaml; do
     echo "[RUNNING] $yaml"
     echo "===================================================="
 
-    bash "$SCRIPT_DIR/single.sh" "$yaml"
+    bash "$SCRIPT_DIR/iperf.sh" "$yaml"
 
     echo
     echo "[DONE] $yaml"
