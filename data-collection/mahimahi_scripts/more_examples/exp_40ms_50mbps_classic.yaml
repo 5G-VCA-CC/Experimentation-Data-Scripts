@@ -1,0 +1,37 @@
+output_dir: ./outputs/50mbps/classic-45
+
+secs_per_run: 30
+num_runs: 100
+MAX_DELAY_THRESH_MS: 1
+
+# Mahimahi traces
+traces:
+  up: ../traces/LTE5G_50Mbps.up
+  down: ../traces/LTE5G_50Mbps.down
+
+# Always remember mahimahi for classic has inner 10ms RTT while kernel has 0
+# mahimahi also x2 this delay
+
+mahimahi:
+  delay_ms: 20 # 2 x 20 = 50ms
+
+# Queue discipline configuration (used by mm-link)
+queue:
+  type: dualPI2
+  packets: 1042
+  target: 45
+  tupdate: 16
+  alpha: 0.16
+  beta: 3.2
+
+paths:
+  scream_dir: /home/linghe-zhang/scream/scream
+
+flows:
+  # Ports used per run:
+  #   classic port = base_port + 2*idx
+  #   l4s     port = base_port + 2*idx + 1
+  base_port: 5300
+
+  classic: { enabled: true }
+  l4s:     { enabled: false }

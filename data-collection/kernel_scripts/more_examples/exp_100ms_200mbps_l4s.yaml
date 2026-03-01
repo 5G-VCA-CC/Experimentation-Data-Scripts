@@ -1,0 +1,39 @@
+runs:
+  secs_per_run: 30
+  num_runs: 100
+  setup_sec: 3
+  warmup_sec: 0
+  cooldown_sec: 3
+
+net:
+  ns_s: ns_s
+  ns_r: ns_r
+  veth_dev: veth-s
+  dst_ip: 172.20.1.2
+  port_classic: 8080
+  port_l4s: 8081
+  rtt_ms: 100
+
+paths:
+  tc_bin: /home/linghe-zhang/iproute2/tc/tc
+  scream_dir: /home/linghe-zhang/scream/scream
+
+qdisc:
+  rate: 200mbit
+  burst: 100k
+  target: 15ms
+  tupdate: 16ms
+  limit: 4167
+  alpha: 0.16
+  beta: 3.2
+
+# Presence enables flow. SCReAM bw test is UDP-only.
+flows:
+  # classic:
+  #   tos: 2   # ECT(0)
+  l4s:
+    tos: 1   # ECT(1)
+
+logging:
+  dir: ./tmp/200mbps/l4s
+  qdisc_sample_sec: 0.016

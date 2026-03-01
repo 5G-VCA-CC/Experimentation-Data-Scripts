@@ -23,17 +23,48 @@ Total = 3 BDP × 3 traffic regimes = 9 core scenarios.
 
 # Running Experiments
 
+## Requirements
+
+Before running:
+
+- Update `paths.tc_bin` in the YAML file to point to your correct `tc` binary (especially if using a custom iproute2 build with dualpi2 support).
+- Ensure Mahimahi is installed and accessible with `sudo`.
+- Install `iperf3` and verify it is available in your PATH:
+  
+  iperf3 --version
+
+- Install Python 3 with PyYAML:
+  
+  python3 -c "import yaml"
+
+- Run on a Linux system (required for `ip netns`, `tc`, IFB, and sysctl networking features).
+
+## Notes
+
+- All experiments use `iperf3` directly (both server and client are launched inside network namespaces).
+- ECN is enabled automatically inside namespaces.
+- L4S experiments require the `prague` congestion control module to be available.
+- Logs are written to the directory specified in `logging.dir` in the YAML file.
+
 ## Single Experiment
 
-```bash
-./single.sh exp_20ms_l4s.yaml
-```
+Currently, only iperf experiments are supported.
 
-Kernel scripts: edit line 8  
-`CFG=${1:-exp.yaml}`  
+### Configure the YAML Path
 
-Mahimahi scripts: edit line 4  
-`CFG="${1:-exp_100ms_200mbps_classic.yaml}"`
+Edit the configuration path inside the appropriate script.
+
+Kernel scripts (line 8):
+CFG=${1:-exp.yaml}
+
+Mahimahi scripts (line 4):
+CFG="${1:-exp_100ms_200mbps_classic.yaml}"
+
+Adjust the default YAML file as needed.
+
+### Run the Experiment
+
+./iperf.sh
 
 ## All Experiments
 
@@ -41,7 +72,7 @@ Mahimahi scripts: edit line 4
 ./together.sh
 ```
 
-Runs all configs sequentially.
+Runs all configs (files ending in .yaml) sequentially that's in the same directory as ./together.sh. 
 
 This does not delete previous data. It appends new runs to the existing folders.
 
