@@ -27,23 +27,31 @@ Total = 3 BDP × 3 traffic regimes = 9 core scenarios.
 
 Before running:
 
-- Update `paths.tc_bin` in the YAML file to point to your correct `tc` binary (especially if using a custom iproute2 build with dualpi2 support).
+Before running:
+
+- Update `paths.tc_bin` in the YAML file to point to your correct `tc` binary  
+  (especially if using a custom iproute2 build with dualpi2 support).
 - Ensure Mahimahi is installed and accessible with `sudo`.
 - Install `iperf3` and verify it is available in your PATH:
-  
+
   iperf3 --version
 
 - Install Python 3 with PyYAML:
-  
+
   python3 -c "import yaml"
 
 - Run on a Linux system (required for `ip netns`, `tc`, IFB, and sysctl networking features).
+- Use a kernel that includes the **Prague (TCP Prague) congestion control module**.
+- Before running experiments, execute:
+
+  ./FORCE.sh
+
+  This script enables TCP ECN and ensures the Prague congestion control module is active.
 
 ## Notes
 
 - All experiments use `iperf3` directly (both server and client are launched inside network namespaces).
-- ECN is enabled automatically inside namespaces.
-- L4S experiments require the `prague` congestion control module to be available.
+- Classic flows use `cubic`; L4S flows use `prague`.
 - Logs are written to the directory specified in `logging.dir` in the YAML file.
 
 ## Single Experiment
