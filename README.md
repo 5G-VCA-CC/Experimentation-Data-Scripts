@@ -27,8 +27,6 @@ Total = 3 BDP × 3 traffic regimes = 9 core scenarios.
 
 Before running:
 
-Before running:
-
 - Update `paths.tc_bin` in the YAML file to point to your correct `tc` binary  
   (especially if using a custom iproute2 build with dualpi2 support).
 - Ensure Mahimahi is installed and accessible with `sudo`.
@@ -47,6 +45,60 @@ Before running:
   ./FORCE.sh
 
   This script enables TCP ECN and ensures the Prague congestion control module is active.
+
+## More on Yaml
+
+┌──────────────────────────────────────────────────────────────┐
+│ Example YAML Configuration – Field Descriptions              │
+├──────────────────────────────────────────────────────────────┤
+│ output_dir                                                   │
+│   Directory where all logs and validation outputs are saved. │
+│                                                              │
+│ secs_per_run                                                 │
+│   Duration (seconds) of each individual experiment run.      │
+│                                                              │
+│ num_runs                                                     │
+│   Total number of repeated runs for statistical analysis.    │
+│                                                              │
+│ MAX_DELAY_THRESH_MS                                          │
+│   Maximum delay threshold (ms) used in validation checks.    │
+│                                                              │
+│ traces.up / traces.down                                      │
+│   Bandwidth trace files used by mm-link to emulate capacity. |
+│                                                              │
+│ mahimahi.delay_ms                                            │
+│   One-way propagation delay (ms).                            │
+│   Effective RTT is doubled (forward + reverse path).         |
+│                                                              │
+│ queue.type                                                   │
+│   Queue discipline used (e.g., dualPI2).                     │
+│                                                              │
+│ queue.packets                                                │
+│   Maximum queue size (in packets).                           │
+│                                                              │
+│ queue.target                                                 │
+│   Target queue delay (ms) for AQM control.                   │
+│                                                              │
+│ queue.tupdate                                                │
+│   Controller update interval (ms).                           │
+│                                                              │
+│ queue.alpha / queue.beta                                     │
+│   PI2 control parameters for marking/dropping behavior.      |
+│                                                              │
+│ flows.base_port                                              │
+│   Starting port number.                                      │
+│   For run i:                                                 │
+│     Classic = base_port + 2*i                                │
+│     L4S     = base_port + 2*i + 1                            │
+│                                                              │
+│ flows.classic.enabled                                        │
+│   Enable/disable Classic flow.                               │
+│                                                              │
+│ flows.l4s.enabled                                            │
+│   Enable/disable L4S flow.                                   │
+│                                                              │
+│ Set classic or l4s to true/false to run single or dual flow. |
+└──────────────────────────────────────────────────────────────┘
 
 ## Notes
 
