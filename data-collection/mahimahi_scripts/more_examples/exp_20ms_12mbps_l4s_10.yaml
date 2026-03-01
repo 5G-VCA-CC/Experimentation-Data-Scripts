@@ -6,9 +6,9 @@ num_runs: 100
 
 # Mahimahi traces
 traces:
-  up: ../traces/DSL_12Mbps.up
-  down: ../traces/DSL_12Mbps.down
-
+  up: ../traces/fixed-12mbps.trace
+  down: ../traces/fixed-12mbps.trace
+  
 mahimahi:
   delay_ms: 10
 

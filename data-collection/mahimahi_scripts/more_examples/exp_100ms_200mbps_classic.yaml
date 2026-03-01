@@ -6,8 +6,8 @@ MAX_DELAY_THRESH_MS: 1
 
 # Mahimahi traces
 traces:
-  up: ../traces/Fiber_200Mbps.up
-  down: ../traces/Fiber_200Mbps.down
+  up: ../traces/fixed-200mbps.trace
+  down: ../traces/fixed-200mbps.trace
 
 # Always remember mahimahi for classic has inner 10ms RTT while kernel has 0
 # mahimahi also x2 this delay

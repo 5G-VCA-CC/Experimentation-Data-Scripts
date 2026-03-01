@@ -7,8 +7,8 @@ MAX_DELAY_THRESH_MS: 5
 
 # Mahimahi traces
 traces:
-  up: ../traces/LTE5G_50Mbps.up
-  down: ../traces/LTE5G_50Mbps.down
+  up: ../traces/fixed-50mbps.trace
+  down: ../traces/fixed-50mbps.trace
 
 # Always remember mahimahi for classic has inner 10ms RTT while kernel has 0
 # mahimahi also x2 this delay

@@ -6,8 +6,8 @@ MAX_DELAY_THRESH_MS: 1
 
 # Mahimahi traces
 traces:
-  up: ../traces/DSL_12Mbps.up
-  down: ../traces/DSL_12Mbps.down
+  up: ../traces/fixed-12mbps.trace
+  down: ../traces/fixed-12mbps.trace
 
 # mahimahi also x2 this delay
 

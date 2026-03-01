@@ -5,8 +5,8 @@ num_runs: 100
 
 # Mahimahi traces
 traces:
-  up: ../traces/DSL_12Mbps.up
-  down: ../traces/DSL_12Mbps.down
+  up: ../traces/fixed-12mbps.trace
+  down: ../traces/fixed-12mbps.trace
 
 # Always remember mahimahi for classic has inner 10ms RTT while kernel has 0
 # mahimahi also x2 this delay 
