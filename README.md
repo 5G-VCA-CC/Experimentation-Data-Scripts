@@ -42,7 +42,7 @@ Before running:
 - Use a kernel that includes the **Prague (TCP Prague) congestion control module**.
 - Before running experiments, execute:
 
-  ./FORCE.sh
+  sudo ./FORCE.sh
 
   This script enables TCP ECN and ensures the Prague congestion control module is active.
 
@@ -88,7 +88,7 @@ Currently, only iperf experiments are supported.
 Edit the configuration path inside the appropriate script.
 
 Kernel scripts (line 8):
-CFG=${1:-exp.yaml}
+CFG=${1:-exp.yaml} <- note here this yaml does not exist thus it will run error: exp.yaml does not exist, so replace with the one you want to run
 
 Mahimahi scripts (line 4):
 CFG="${1:-exp_100ms_200mbps_classic.yaml}"
@@ -99,13 +99,13 @@ Adjust the default YAML file as needed.
 
 
 ```bash
-./iperf.sh
+sudo ./iperf.sh
 ```
 
 ## All Experiments
 
 ```bash
-./together.sh
+sudo ./together.sh
 ```
 
 Runs all configs (files ending in .yaml) sequentially that's in the same directory as ./together.sh. 
